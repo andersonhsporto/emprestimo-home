@@ -1,9 +1,9 @@
 export interface IClient {
-  cpf: string;
-  name: string;
-  telephone: string;
-  street: string;
-  number: string;
-  neighborhood: string;
-  salary: number;
+  CPF: string;
+  nome: string;
+  telefone: string;
+  rua: string;
+  numero: number;
+  CEP: string;
+  salario: number;
 }
