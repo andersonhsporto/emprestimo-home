@@ -1,4 +1,4 @@
-import { TelephonePipe } from './telephone.pipe';
+import {TelephonePipe} from './telephone.pipe';
 
 describe('TelephonePipe', () => {
   it('create an instance', () => {

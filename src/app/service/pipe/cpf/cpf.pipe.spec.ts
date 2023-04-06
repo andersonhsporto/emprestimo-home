@@ -1,4 +1,4 @@
-import { CpfPipe } from './cpf.pipe';
+import {CpfPipe} from './cpf.pipe';
 
 describe('CpfPipe', () => {
   it('create an instance', () => {

@@ -7,3 +7,4 @@ export interface IClient {
   CEP: string;
   salario: number;
 }
+

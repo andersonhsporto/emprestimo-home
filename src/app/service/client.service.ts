@@ -17,8 +17,8 @@ export class ClientService {
     return this.http.get<IClient[]>(this.api + this.endpoint);
   }
 
-  getByCpf(cpf: string) {
-    return this.http.get(this.api + this.endpoint + '/' + cpf);
+  getClientByCpf(cpf: string) {
+    return this.http.get<IClient>(this.api + this.endpoint + '/' + cpf);
   }
 
   createClient(client: IClient) {
@@ -32,5 +32,4 @@ export class ClientService {
   deleteClient(cpf: string) {
     return this.http.delete(this.api + this.endpoint + '/' + cpf);
   }
-
 }

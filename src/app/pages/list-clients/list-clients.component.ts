@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ClientService } from "../../service/client.service";
+import {Component} from '@angular/core';
+import {ClientService} from "../../service/client.service";
 import {IClient} from "../../interface/client";
 
 @Component({
@@ -9,7 +9,9 @@ import {IClient} from "../../interface/client";
 })
 export class ListClientsComponent {
   clients: IClient[] = [];
-  constructor(private clientService : ClientService) {}
+
+  constructor(private clientService: ClientService) {
+  }
 
   ngOnInit() {
     this.clientService.getAllClients().subscribe((result: IClient[]) => {
