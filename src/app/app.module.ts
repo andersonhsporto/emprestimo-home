@@ -8,13 +8,20 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { ListClientsComponent } from './pages/list-clients/list-clients.component';
+import {HttpClientModule} from "@angular/common/http";
+import { CpfPipe } from './service/pipe/cpf/cpf.pipe';
+import { TelephonePipe } from './service/pipe/telephone/telephone.pipe';
+import { CreateClientComponent } from './pages/create-client/create-client/create-client.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    ListClientsComponent
+    ListClientsComponent,
+    CreateClientComponent,
+    CpfPipe,
+    TelephonePipe
   ],
   imports: [
     BrowserModule,
@@ -22,7 +29,8 @@ import { ListClientsComponent } from './pages/list-clients/list-clients.componen
     NgbModule,
     RouterOutlet,
     RouterLinkActive,
-    RouterLink
+    RouterLink,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
