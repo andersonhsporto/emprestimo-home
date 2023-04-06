@@ -1,0 +1,45 @@
+<h1 class="display-6">{{ clientCPF ? 'Editar' : 'Cadastrar' }}</h1>
+<hr />
+
+<form [formGroup]="clientForm" (ngSubmit)="create()">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputName" class="form-label">Nome:</label>
+      <input type="text" class="form-control" id="inputName" formControlName="inputName" placeholder="Vinicius de Moraes">
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="inputCPF">CPF:</label>
+      <input type="text" class="form-control" id="inputCPF" formControlName="inputCPF" placeholder="00000000000">
+    </div>{{ clientCPF ? 'Editar' : 'Cadastrar' }}
+    </div>
+
+    <div class="form-group col-md-6">
+      <div class="mb-3">
+      <label for="inputTelephone">Telefone:</label>
+      <input type="text" class="form-control" id="inputTelephone" formControlName="inputTelephone" placeholder="00000000000">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputStreet">Rua:</label>
+      <input type="text" class="form-control" id="inputStreet" formControlName="inputStreet" placeholder="Rua dos Bobos">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputNumber">Número:</label>
+      <input type="number" class="form-control" id="inputNumber" formControlName="inputNumber" placeholder="0">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputZip">CEP:</label>
+      <input type="text" class="form-control" id="inputZip" formControlName="inputZip" placeholder="00000-000">
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="inputIncome">Rendimento Mensal:</label>
+      <input type="number" class="form-control" id="inputIncome" formControlName="inputIncome" placeholder="2000">
+    </div>
+
+    <button type="submit" [disabled]="!clientForm.valid" class="btn btn-dark">{{ clientCPF ? 'Editar' : 'Cadastrar' }}</button>
+  </div>
+</form>
