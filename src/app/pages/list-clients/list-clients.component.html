@@ -1,1 +1,29 @@
-<p>list-clients works!</p>
+<table class="table table-striped table-hove">
+  <thead>
+  <tr>
+    <th scope="col">CPF</th>
+    <th scope="col">Nome</th>
+    <th scope="col">Telefone</th>
+    <th scope="col">Rua</th>
+    <th scope="col">Número</th>
+    <th scope="col">CEP</th>
+    <th scope="col">Rendimento Mensal</th>
+    <th scope="col">Ações</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let client of clients">
+    <th scope="row">{{client.CPF | cpf }}</th>
+    <td>{{client.nome}}</td>
+    <td>{{client.telefone | telephone }}</td>
+    <td>{{client.rua}}</td>
+    <td>{{client.numero}}</td>
+    <td>{{client.CEP}}</td>
+    <td>{{client.salario | currency: 'BRL'}}</td>
+    <td>
+      <button type="button" class="btn btn-dark btn-sm">Editar</button>
+      <button type="button" class="btn btn-danger btn-sm ms-1">Remover</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
