@@ -1,17 +1,17 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {ListClientsComponent} from './list-clients.component';
+import {TableClientsComponent} from './table-clients.component';
 
 describe('ListClientsComponent', () => {
-  let component: ListClientsComponent;
-  let fixture: ComponentFixture<ListClientsComponent>;
+  let component: TableClientsComponent;
+  let fixture: ComponentFixture<TableClientsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ListClientsComponent]
+      declarations: [TableClientsComponent]
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(ListClientsComponent);
+    fixture = TestBed.createComponent(TableClientsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
