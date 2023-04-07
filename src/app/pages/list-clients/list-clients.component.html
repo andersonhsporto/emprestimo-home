@@ -21,7 +21,7 @@
     <td>{{client.CEP}}</td>
     <td>{{client.salario | currency: 'BRL'}}</td>
     <td>
-      <button type="button" class="btn btn-dark btn-sm">Editar</button>
+      <button type="button" class="btn btn-dark btn-sm" routerLink="/clientes/cadastro/{{client.CPF}}">Editar</button>
       <button type="button" class="btn btn-danger btn-sm ms-1">Remover</button>
     </td>
   </tr>
