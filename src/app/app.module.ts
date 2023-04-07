@@ -7,7 +7,7 @@ import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {HomeComponent} from './pages/home/home.component';
 import {AppRoutingModule} from './app-routing/app-routing.module';
-import {ListClientsComponent} from './pages/list-clients/list-clients.component';
+import {TableClientsComponent} from './pages/table-clients/table-clients.component';
 import {HttpClientModule} from "@angular/common/http";
 import {CpfPipe} from './service/pipe/cpf/cpf.pipe';
 import {TelephonePipe} from './service/pipe/telephone/telephone.pipe';
@@ -15,7 +15,7 @@ import {CreateClientComponent} from './pages/create-update-client/create-client.
 import {ReactiveFormsModule} from "@angular/forms";
 import localePt from '@angular/common/locales/pt';
 import {registerLocaleData} from "@angular/common";
-import {ConfirmationComponent} from './components/confirmation/confirmation.component';
+import {RouterModule} from "@angular/router";
 
 registerLocaleData(localePt, 'pt');
 
@@ -24,11 +24,10 @@ registerLocaleData(localePt, 'pt');
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    ListClientsComponent,
+    TableClientsComponent,
     CreateClientComponent,
     CpfPipe,
-    TelephonePipe,
-    ConfirmationComponent
+    TelephonePipe
   ],
   imports: [
     BrowserModule,
@@ -37,6 +36,7 @@ registerLocaleData(localePt, 'pt');
     RouterOutlet,
     RouterLinkActive,
     RouterLink,
+    RouterModule,
     HttpClientModule,
     ReactiveFormsModule
   ],
