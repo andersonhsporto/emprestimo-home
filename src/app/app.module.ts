@@ -15,7 +15,7 @@ import {CreateClientComponent} from './pages/create-update-client/create-client.
 import {ReactiveFormsModule} from "@angular/forms";
 import localePt from '@angular/common/locales/pt';
 import {registerLocaleData} from "@angular/common";
-import { ConfirmationComponent } from './components/confirmation/confirmation/confirmation.component';
+import {ConfirmationComponent} from './components/confirmation/confirmation.component';
 
 registerLocaleData(localePt, 'pt');
 
