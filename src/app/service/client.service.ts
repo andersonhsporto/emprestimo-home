@@ -22,11 +22,11 @@ export class ClientService {
   }
 
   createClient(client: IClient) {
-    return this.http.post(this.api + this.endpoint, client);
+    return this.http.post<IClient>(this.api + this.endpoint, client);
   }
 
-  updateClient(client: IClient) {
-    return this.http.put(this.api + this.endpoint, client);
+  updateClient(client: IClient, cpf: string) {
+    return this.http.put<IClient>(this.api + this.endpoint + '/' + cpf, client);
   }
 
   deleteClient(cpf: string) {
