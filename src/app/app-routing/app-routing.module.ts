@@ -14,6 +14,9 @@ const routes: Routes = [
   },
   {
     path: 'clientes/cadastro', component: CreateClientComponent
+  },
+  {
+    path: 'clientes/cadastro/:cpf', component: CreateClientComponent
   }
 ];
 
