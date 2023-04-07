@@ -3,6 +3,7 @@ import {ClientService} from "../../service/client.service";
 import {ActivatedRoute} from "@angular/router";
 import {IClient} from "../../interface/client";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-create-update-client',
@@ -20,11 +21,12 @@ export class CreateClientComponent {
     inputZip: new FormControl('', Validators.required),
     inputIncome: new FormControl(0, Validators.required)
   })
+  clientCPF = "";
+  protected readonly console = console;
+
   constructor(private clientService: ClientService,
               private route: ActivatedRoute) {
   }
-
-  clientCPF = "";
 
   ngOnInit() {
     if (this.route.snapshot.paramMap.get('cpf')) {
@@ -32,7 +34,7 @@ export class CreateClientComponent {
     }
   }
 
-  ngOnSubmit() {
+  submit() {
     if (this.clientCPF) {
       this.update();
     } else {
@@ -44,9 +46,24 @@ export class CreateClientComponent {
     const client: IClient = this.fromForm(this.clientForm.value);
 
     this.clientService.createClient(client).subscribe(result => {
-      console.table(client);
+      Swal.fire(
+        {
+          title: 'Cliente criado com sucesso',
+          text: 'Cliente com CPF ' + client.CPF + ' foi adicionado ao sistema',
+          icon: 'success',
+          confirmButtonText: 'Ok'
+        }
+      )
     }, error => {
-      console.error(error);
+      let errorsMessage = this.concatenateErrors(error.error.errors);
+      Swal.fire(
+        {
+          title: 'Erro ao criar cliente',
+          text: errorsMessage,
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        }
+      )
     });
   }
 
@@ -54,9 +71,25 @@ export class CreateClientComponent {
     const client: IClient = this.fromForm(this.clientForm.value);
 
     this.clientService.updateClient(client, this.clientCPF).subscribe(result => {
-      console.log(client);
+      Swal.fire(
+        {
+          title: 'Cliente atualizado com sucesso',
+          text: 'Cliente com CPF ' + client.CPF + ' foi atualizado no sistema',
+          icon: 'success',
+          confirmButtonText: 'Ok'
+        }
+      )
     }, error => {
-      console.error(error);
+      let errorsMessage = this.concatenateErrors(error.error.errors);
+
+      Swal.fire(
+        {
+          title: 'Erro ao atualizar cliente',
+          text: errorsMessage,
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        }
+      )
     });
   }
 
@@ -76,6 +109,7 @@ export class CreateClientComponent {
       });
     }
   }
+
   private fromForm(form: any): IClient {
     return {
       CPF: form.inputCPF,
@@ -88,5 +122,11 @@ export class CreateClientComponent {
     };
   }
 
-  protected readonly console = console;
+  private concatenateErrors(errors: string[]): string {
+    let str = "";
+    for (let i = 0; i < errors.length; i++) {
+      str += errors[i] + " ";
+    }
+    return str;
+  }
 }
