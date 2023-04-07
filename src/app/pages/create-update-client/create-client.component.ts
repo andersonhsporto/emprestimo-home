@@ -32,12 +32,29 @@ export class CreateClientComponent {
     }
   }
 
+  ngOnSubmit() {
+    if (this.clientCPF) {
+      this.update();
+    } else {
+      this.create();
+    }
+  }
+
   create() {
     const client: IClient = this.fromForm(this.clientForm.value);
 
-
     this.clientService.createClient(client).subscribe(result => {
       console.table(client);
+    }, error => {
+      console.error(error);
+    });
+  }
+
+  update() {
+    const client: IClient = this.fromForm(this.clientForm.value);
+
+    this.clientService.updateClient(client, this.clientCPF).subscribe(result => {
+      console.log(client);
     }, error => {
       console.error(error);
     });
