@@ -1,45 +1,49 @@
 <h1 class="display-6">{{ clientCPF ? 'Editar' : 'Cadastrar' }}</h1>
-<hr />
+<hr/>
 
-<form [formGroup]="clientForm">
+<form (ngSubmit)="submit()" [formGroup]="clientForm">
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputName" class="form-label">Nome:</label>
-      <input type="text" class="form-control" id="inputName" formControlName="inputName" placeholder="Vinicius de Moraes">
+      <label class="form-label" for="inputName">Nome:</label>
+      <input class="form-control" formControlName="inputName" id="inputName" placeholder="Vinicius de Moraes"
+             type="text">
     </div>
 
     <div class="form-group col-md-6">
       <label for="inputCPF">CPF:</label>
-      <input type="text" class="form-control" id="inputCPF" formControlName="inputCPF" placeholder="00000000000">
+      <input class="form-control" formControlName="inputCPF" id="inputCPF" placeholder="00000000000" type="text">
     </div>
-    </div>
+  </div>
 
-    <div class="form-group col-md-6">
-      <div class="mb-3">
+  <div class="form-group col-md-6">
+    <div class="mb-3">
       <label for="inputTelephone">Telefone:</label>
-      <input type="text" class="form-control" id="inputTelephone" formControlName="inputTelephone" placeholder="00000000000">
+      <input class="form-control" formControlName="inputTelephone" id="inputTelephone" placeholder="00000000000"
+             type="text">
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputStreet">Rua:</label>
-      <input type="text" class="form-control" id="inputStreet" formControlName="inputStreet" placeholder="Rua dos Bobos">
+      <input class="form-control" formControlName="inputStreet" id="inputStreet" placeholder="Rua dos Bobos"
+             type="text">
     </div>
     <div class="form-group col-md-6">
       <label for="inputNumber">Número:</label>
-      <input type="number" class="form-control" id="inputNumber" formControlName="inputNumber" placeholder="0">
+      <input class="form-control" formControlName="inputNumber" id="inputNumber" placeholder="0" type="number">
     </div>
     <div class="form-group col-md-2">
       <label for="inputZip">CEP:</label>
-      <input type="text" class="form-control" id="inputZip" formControlName="inputZip" placeholder="00000-000">
+      <input class="form-control" formControlName="inputZip" id="inputZip" placeholder="00000-000" type="text">
     </div>
 
     <div class="form-group col-md-2">
       <label for="inputIncome">Rendimento Mensal:</label>
-      <input type="number" class="form-control" id="inputIncome" formControlName="inputIncome" placeholder="2000">
+      <input class="form-control" formControlName="inputIncome" id="inputIncome" placeholder="2000" type="number">
     </div>
 
-    <button type="submit" [disabled]="!clientForm.valid" class="btn btn-dark">{{ clientCPF ? 'Editar' : 'Cadastrar' }}</button>
+    <button [disabled]="!clientForm.valid" class="btn btn-dark"
+            type="submit">{{ clientCPF ? 'Editar' : 'Cadastrar' }}</button>
   </div>
 </form>

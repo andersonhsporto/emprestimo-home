@@ -20,7 +20,7 @@ export class TableClientsComponent {
     })
   }
 
-  deleteClient(cpf : string){
+  deleteClient(cpf: string) {
     Swal.fire({
       title: 'Tem certeza?',
       text: "Você não poderá reverter isso!",
