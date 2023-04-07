@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
@@ -13,6 +13,11 @@ import {CpfPipe} from './service/pipe/cpf/cpf.pipe';
 import {TelephonePipe} from './service/pipe/telephone/telephone.pipe';
 import {CreateClientComponent} from './pages/create-update-client/create-client.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import localePt from '@angular/common/locales/pt';
+import {registerLocaleData} from "@angular/common";
+import { ConfirmationComponent } from './components/confirmation/confirmation/confirmation.component';
+
+registerLocaleData(localePt, 'pt');
 
 @NgModule({
   declarations: [
@@ -22,19 +27,28 @@ import {ReactiveFormsModule} from "@angular/forms";
     ListClientsComponent,
     CreateClientComponent,
     CpfPipe,
-    TelephonePipe
+    TelephonePipe,
+    ConfirmationComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        NgbModule,
-        RouterOutlet,
-        RouterLinkActive,
-        RouterLink,
-        HttpClientModule,
-        ReactiveFormsModule
-    ],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    RouterOutlet,
+    RouterLinkActive,
+    RouterLink,
+    HttpClientModule,
+    ReactiveFormsModule
+  ],
+  providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt'
+    },
+    {
+      provide: DEFAULT_CURRENCY_CODE,
+      useValue: 'BRL'
+    },],
   bootstrap: [AppComponent]
 })
 export class AppModule {
