@@ -1,49 +1,82 @@
-<h1 class="display-6">{{ clientCPF ? 'Editar' : 'Cadastrar' }}</h1>
-<hr/>
+<div class="form-body">
+  <div class="row">
+    <div class="form-holder">
+      <div class="form-content">
+        <div class="form-items">
+          <h3>{{ clientCPF ? 'Editar Cliente' : 'Cadastrar Cliente' }}</h3>
+          <p>Insira os dados do cliente.</p>
+          <form (ngSubmit)="onSubmit()" [formGroup]="clientForm" class="client-form requires-validation">
 
-<form (ngSubmit)="submit()" [formGroup]="clientForm">
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label class="form-label" for="inputName">Nome:</label>
-      <input class="form-control" formControlName="inputName" id="inputName" placeholder="Vinicius de Moraes"
-             type="text">
-    </div>
+            <div class="col-md-12">
+              <label for="name">Nome Completo:</label>
+              <input class="form-control" formControlName="inputName" id="name" name="name"
+                     placeholder="Nome Completo" required type="text">
+            </div>
+            <app-field-error [displayError]="isFieldValid('inputName')"
+                             errorMsg="Campo Nome Completo não pode ser vazio">
+            </app-field-error>
 
-    <div class="form-group col-md-6">
-      <label for="inputCPF">CPF:</label>
-      <input class="form-control" formControlName="inputCPF" id="inputCPF" placeholder="00000000000" type="text">
+            <div class="col-md-12">
+              <label for="cpf">CPF:</label>
+              <input class="form-control" formControlName="inputCPF" id="cpf" name="cpf"
+                     placeholder="CPF" required type="text">
+              <app-field-error [displayError]="isFieldValid('inputCPF')"
+                               errorMsg="CPF Inválido">
+              </app-field-error>
+            </div>
+
+            <div class="col-md-12">
+              <label for="telefone">Telefone:</label>
+              <input class="form-control" formControlName="inputTelephone" id="telefone" name="Telefone"
+                     placeholder="Telefone" required type="text">
+              <app-field-error [displayError]="isFieldValid('inputTelephone')"
+                               errorMsg="Campo Telefone não pode ser vazio">
+              </app-field-error>
+            </div>
+
+            <div class="col-md-12">
+              <label for="rua">Rua:</label>
+              <input class="form-control" formControlName="inputStreet" id="rua" name="Rua"
+                     placeholder="Rua" required type="text">
+              <app-field-error [displayError]="isFieldValid('inputStreet')"
+                               errorMsg="Campo Rua não pode ser vazio">
+              </app-field-error>
+            </div>
+
+            <div class="col-md-12">
+              <label for="numero">Número:</label>
+              <input class="form-control" formControlName="inputNumber" id="numero" name="inputNumber"
+                     placeholder="Número" required type="text">
+              <app-field-error [displayError]="isFieldValid('inputNumber')"
+                               errorMsg="Campo Número não pode ser vazio">
+              </app-field-error>
+            </div>
+
+            <div class="col-md-12">
+              <label for="cep">CEP:</label>
+              <input class="form-control" formControlName="inputZip" id="cep" name="inputZip"
+                     placeholder="CEP" required type="text">
+              <app-field-error [displayError]="isFieldValid('inputZip')"
+                               errorMsg="Campo CEP não pode ser vazio">
+              </app-field-error>
+            </div>
+
+            <div class="col-md-12">
+              <label for="rendimento-mensal">Rendimento Mensal:</label>
+              <input class="form-control" currencyMask formControlName="inputIncome" id="rendimento-mensal"
+                     name="inputZip" placeholder="Rendimento Mensal" required type="text">
+              <app-field-error [displayError]="isFieldValid('inputIncome')"
+                               errorMsg="Campo Rendimento Mensal não pode ser vazio">
+              </app-field-error>
+            </div>
+
+            <div class="form-button mt-3">
+              <button class="btn btn-primary" id="submit"
+                      type="submit">{{ clientCPF ? 'Editar' : 'Cadastrar' }}</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
-
-  <div class="form-group col-md-6">
-    <div class="mb-3">
-      <label for="inputTelephone">Telefone:</label>
-      <input class="form-control" formControlName="inputTelephone" id="inputTelephone" placeholder="00000000000"
-             type="text">
-    </div>
-  </div>
-
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputStreet">Rua:</label>
-      <input class="form-control" formControlName="inputStreet" id="inputStreet" placeholder="Rua dos Bobos"
-             type="text">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputNumber">Número:</label>
-      <input class="form-control" formControlName="inputNumber" id="inputNumber" placeholder="0" type="number">
-    </div>
-    <div class="form-group col-md-2">
-      <label for="inputZip">CEP:</label>
-      <input class="form-control" formControlName="inputZip" id="inputZip" placeholder="00000-000" type="text">
-    </div>
-
-    <div class="form-group col-md-2">
-      <label for="inputIncome">Rendimento Mensal:</label>
-      <input class="form-control" formControlName="inputIncome" id="inputIncome" placeholder="2000" type="number">
-    </div>
-
-    <button [disabled]="!clientForm.valid" class="btn btn-dark"
-            type="submit">{{ clientCPF ? 'Editar' : 'Cadastrar' }}</button>
-  </div>
-</form>
+</div>

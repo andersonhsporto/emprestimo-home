@@ -1,23 +1,30 @@
-import {Component} from '@angular/core';
+import {Component, Input, ViewEncapsulation} from '@angular/core';
 import {ClientService} from "../../service/client.service";
 import {ActivatedRoute} from "@angular/router";
 import {IClient} from "../../interface/client";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import Swal from "sweetalert2";
+import {CurrencyPipe} from "@angular/common";
 
 @Component({
   selector: 'app-create-update-client',
   templateUrl: './create-client.component.html',
-  styleUrls: ['./create-client.component.css']
+  styleUrls: ['./create-client.component.css'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class CreateClientComponent {
 
   clientForm = new FormGroup({
-    inputCPF: new FormControl('', Validators.required),
+    inputCPF: new FormControl('',
+      Validators.compose([
+        Validators.required,
+        Validators.minLength(11),
+        Validators.maxLength(11),
+        Validators.pattern('^[0-9]*$')])),
     inputName: new FormControl('', Validators.required),
     inputTelephone: new FormControl('', Validators.required),
     inputStreet: new FormControl('', Validators.required),
-    inputNumber: new FormControl(0, Validators.required),
+    inputNumber: new FormControl(0, Validators.required || Validators.min(0)),
     inputZip: new FormControl('', Validators.required),
     inputIncome: new FormControl(0, Validators.required)
   })
@@ -31,14 +38,20 @@ export class CreateClientComponent {
   ngOnInit() {
     if (this.route.snapshot.paramMap.get('cpf')) {
       this.loadClient();
+    } else {
+      this.clientForm.controls['inputIncome'].setValue(null);
+      this.clientForm.controls['inputNumber'].setValue(null);
     }
   }
 
-  submit() {
-    if (this.clientCPF) {
-      this.update();
-    } else {
-      this.create();
+  onSubmit() {
+    this.validateAllFormFields(this.clientForm);
+    if (this.clientForm.valid) {
+      if (this.clientCPF) {
+        this.update();
+      } else {
+        this.create();
+      }
     }
   }
 
@@ -55,6 +68,11 @@ export class CreateClientComponent {
         }
       )
     }, error => {
+      if (error.status === 0) {
+        this.connectionError();
+        return;
+      }
+
       let errorsMessage = this.concatenateErrors(error.error.errors);
       Swal.fire(
         {
@@ -80,8 +98,12 @@ export class CreateClientComponent {
         }
       )
     }, error => {
-      let errorsMessage = this.concatenateErrors(error.error.errors);
+      if (error.status === 0) {
+        this.connectionError();
+        return;
+      }
 
+      let errorsMessage = this.concatenateErrors(error.error.errors);
       Swal.fire(
         {
           title: 'Erro ao atualizar cliente',
@@ -90,6 +112,29 @@ export class CreateClientComponent {
           confirmButtonText: 'Ok'
         }
       )
+    });
+  }
+
+
+  isFieldValid(field: string) {
+    return !this.clientForm.get(field)!.valid && this.clientForm.get(field)!.touched;
+  }
+
+  displayFieldCss(field: string) {
+    return {
+      'has-error': this.isFieldValid(field),
+      'has-feedback': this.isFieldValid(field)
+    };
+  }
+
+  validateAllFormFields(formGroup: FormGroup) {         //{1}
+    Object.keys(formGroup.controls).forEach(field => {  //{2}
+      const control = formGroup.get(field);             //{3}
+      if (control instanceof FormControl) {             //{4}
+        control.markAsTouched({onlySelf: true});
+      } else if (control instanceof FormGroup) {        //{5}
+        this.validateAllFormFields(control);            //{6}
+      }
     });
   }
 
@@ -125,8 +170,19 @@ export class CreateClientComponent {
   private concatenateErrors(errors: string[]): string {
     let str = "";
     for (let i = 0; i < errors.length; i++) {
-      str += errors[i] + " ";
+      str += errors[i] + " \n";
     }
     return str;
+  }
+
+  private connectionError() {
+    Swal.fire(
+      {
+        title: 'Erro de conexão',
+        text: 'Erro ao conectar com o servidor',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      }
+    )
   }
 }
