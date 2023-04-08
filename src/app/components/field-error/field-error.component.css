@@ -1,0 +1,12 @@
+.error-msg {
+  position: static !important;
+  width: 100%;
+  padding: 8px 20px;
+  border-radius: 6px;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 500;
+  outline: none;
+  resize: none;
+  color: #ff606e;
+}
