@@ -28,7 +28,8 @@ export class TableClientsComponent {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Sim, deletar!'
+      confirmButtonText: 'Sim, deletar!',
+      cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
         this.clientService.deleteClient(cpf).subscribe(() => {
