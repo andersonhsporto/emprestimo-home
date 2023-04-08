@@ -4,7 +4,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
-import {NavbarComponent} from './components/navbar/navbar.component';
+import {NavbarComponent} from './pages/navbar/navbar.component';
 import {HomeComponent} from './pages/home/home.component';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import {TableClientsComponent} from './pages/table-clients/table-clients.component';
@@ -16,8 +16,22 @@ import {ReactiveFormsModule} from "@angular/forms";
 import localePt from '@angular/common/locales/pt';
 import {registerLocaleData} from "@angular/common";
 import {RouterModule} from "@angular/router";
+import {NgxCurrencyModule} from "ngx-currency";
+import {FieldErrorComponent} from './components/field-error/field-error.component';
+import {FooterComponent} from './pages/footer/footer.component';
 
 registerLocaleData(localePt, 'pt');
+export const customCurrencyMaskConfig = {
+  align: "left",
+  allowNegative: false,
+  allowZero: true,
+  decimal: ",",
+  precision: 2,
+  prefix: "R$ ",
+  suffix: "",
+  thousands: ".",
+  nullable: true,
+};
 
 @NgModule({
   declarations: [
@@ -27,7 +41,9 @@ registerLocaleData(localePt, 'pt');
     TableClientsComponent,
     CreateClientComponent,
     CpfPipe,
-    TelephonePipe
+    TelephonePipe,
+    FieldErrorComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +54,8 @@ registerLocaleData(localePt, 'pt');
     RouterLink,
     RouterModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxCurrencyModule.forRoot(customCurrencyMaskConfig)
   ],
   providers: [
     {
