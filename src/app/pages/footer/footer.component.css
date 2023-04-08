@@ -1,0 +1,40 @@
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: block;
+}
+
+footer h4 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+footer p, footer a {
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 1px;
+}
+
+footer a {
+  text-decoration: none;
+  color: #337ab7;
+}
+
+footer img {
+  width: 100px;
+  margin: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+footer img:hover {
+  transform: scale(1.2);
+}
+
+/* Oculta o footer em telas com largura menor ou igual a 768px */
+@media (max-width: 800px) {
+  footer {
+    display: none;
+  }
+}
