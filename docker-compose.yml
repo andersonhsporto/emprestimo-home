@@ -1,0 +1,11 @@
+services:
+  app:
+    image: 'emprestimo-v1:latest'
+    container_name: client-emprestimo
+    build:
+      context: .
+    ports:
+      - '3000:3000'
+
+volumes:
+  volumes:
