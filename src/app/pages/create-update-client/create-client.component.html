@@ -3,7 +3,7 @@
     <div class="form-holder">
       <div class="form-content">
         <div class="form-items">
-          <h3>{{ clientCPF ? 'Editar Cliente' : 'Cadastrar Cliente' }}</h3>
+          <h3>{{ clientCPF ? 'Atualizar Cliente' : 'Cadastrar Cliente' }}</h3>
           <p>Insira os dados do cliente.</p>
           <form (ngSubmit)="onSubmit()" [formGroup]="clientForm" class="client-form requires-validation">
 
@@ -72,7 +72,7 @@
 
             <div class="form-button mt-3">
               <button class="btn btn-primary" id="submit"
-                      type="submit">{{ clientCPF ? 'Editar' : 'Cadastrar' }}</button>
+                      type="submit">{{ clientCPF ? 'Atualizar' : 'Cadastrar' }}</button>
             </div>
           </form>
         </div>
