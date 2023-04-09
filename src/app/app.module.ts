@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
+import {RouterLink, RouterLinkActive, RouterOutlet, RouterModule} from "@angular/router";
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {HomeComponent} from './pages/home/home.component';
 import {AppRoutingModule} from './app-routing/app-routing.module';
@@ -15,7 +15,6 @@ import {CreateClientComponent} from './pages/create-update-client/create-client.
 import {ReactiveFormsModule} from "@angular/forms";
 import localePt from '@angular/common/locales/pt';
 import {NgOptimizedImage, registerLocaleData} from "@angular/common";
-import {RouterModule} from "@angular/router";
 import {NgxCurrencyModule} from "ngx-currency";
 import {FieldErrorComponent} from './components/field-error/field-error.component';
 import {FooterComponent} from './components/footer/footer.component';

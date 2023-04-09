@@ -1,10 +1,9 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {ClientService} from "../../service/client.service";
 import {ActivatedRoute} from "@angular/router";
 import {IClient} from "../../interface/client";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import Swal from "sweetalert2";
-import {CurrencyPipe} from "@angular/common";
 
 @Component({
   selector: 'app-create-update-client',
@@ -35,7 +34,7 @@ export class CreateClientComponent {
               private route: ActivatedRoute) {
   }
 
-  ngOnInit() {
+  ngOnInit():void {
     if (this.route.snapshot.paramMap.get('cpf')) {
       this.loadClient();
     } else {
@@ -44,7 +43,7 @@ export class CreateClientComponent {
     }
   }
 
-  onSubmit() {
+  onSubmit():void {
     this.validateAllFormFields(this.clientForm);
     if (this.clientForm.valid) {
       if (this.clientCPF) {
@@ -55,7 +54,7 @@ export class CreateClientComponent {
     }
   }
 
-  create() {
+  create():void {
     const client: IClient = this.fromForm(this.clientForm.value);
 
     this.clientService.createClient(client).subscribe(result => {
@@ -85,7 +84,7 @@ export class CreateClientComponent {
     });
   }
 
-  update() {
+  update():void {
     const client: IClient = this.fromForm(this.clientForm.value);
 
     this.clientService.updateClient(client, this.clientCPF).subscribe(result => {
@@ -103,7 +102,7 @@ export class CreateClientComponent {
         return;
       }
 
-      let errorsMessage = this.concatenateErrors(error.error.errors);
+      let errorsMessage: string = this.concatenateErrors(error.error.errors);
       Swal.fire(
         {
           title: 'Erro ao atualizar cliente',
@@ -116,7 +115,7 @@ export class CreateClientComponent {
   }
 
 
-  isFieldValid(field: string) {
+  isFieldValid(field: string): boolean {
     return !this.clientForm.get(field)!.valid && this.clientForm.get(field)!.touched;
   }
 
@@ -127,18 +126,18 @@ export class CreateClientComponent {
     };
   }
 
-  validateAllFormFields(formGroup: FormGroup) {         //{1}
-    Object.keys(formGroup.controls).forEach(field => {  //{2}
-      const control = formGroup.get(field);             //{3}
-      if (control instanceof FormControl) {             //{4}
+  validateAllFormFields(formGroup: FormGroup): void {
+    Object.keys(formGroup.controls).forEach(field => {
+      const control = formGroup.get(field);
+      if (control instanceof FormControl) {
         control.markAsTouched({onlySelf: true});
-      } else if (control instanceof FormGroup) {        //{5}
-        this.validateAllFormFields(control);            //{6}
+      } else if (control instanceof FormGroup) {
+        this.validateAllFormFields(control);
       }
     });
   }
 
-  private loadClient() {
+  private loadClient(): void {
     this.clientCPF = String(this.route.snapshot.paramMap.get('cpf'));
     if (this.clientCPF) {
       this.clientService.getClientByCpf(this.clientCPF).subscribe((client: IClient) => {
@@ -168,14 +167,14 @@ export class CreateClientComponent {
   }
 
   private concatenateErrors(errors: string[]): string {
-    let str = "";
-    for (let i = 0; i < errors.length; i++) {
-      str += errors[i] + " \n";
+    let str: string = "";
+    for (const value of errors) {
+      str += value + ' ';
     }
     return str;
   }
 
-  private connectionError() {
+  private connectionError(): void {
     Swal.fire(
       {
         title: 'Erro de conexão',
