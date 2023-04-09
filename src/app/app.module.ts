@@ -4,7 +4,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
-import {NavbarComponent} from './pages/navbar/navbar.component';
+import {NavbarComponent} from './components/navbar/navbar.component';
 import {HomeComponent} from './pages/home/home.component';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import {TableClientsComponent} from './pages/table-clients/table-clients.component';
@@ -14,11 +14,11 @@ import {TelephonePipe} from './service/pipe/telephone/telephone.pipe';
 import {CreateClientComponent} from './pages/create-update-client/create-client.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import localePt from '@angular/common/locales/pt';
-import {registerLocaleData} from "@angular/common";
+import {NgOptimizedImage, registerLocaleData} from "@angular/common";
 import {RouterModule} from "@angular/router";
 import {NgxCurrencyModule} from "ngx-currency";
 import {FieldErrorComponent} from './components/field-error/field-error.component';
-import {FooterComponent} from './pages/footer/footer.component';
+import {FooterComponent} from './components/footer/footer.component';
 
 registerLocaleData(localePt, 'pt');
 export const customCurrencyMaskConfig = {
@@ -55,7 +55,8 @@ export const customCurrencyMaskConfig = {
     RouterModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxCurrencyModule.forRoot(customCurrencyMaskConfig)
+    NgxCurrencyModule.forRoot(customCurrencyMaskConfig),
+    NgOptimizedImage
   ],
   providers: [
     {
