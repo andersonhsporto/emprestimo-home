@@ -7,6 +7,9 @@ import {CreateClientComponent} from "../pages/create-update-client/create-client
 
 const routes: Routes = [
   {
+    path: '', redirectTo: 'home', pathMatch: 'full'
+  },
+  {
     path: 'home', component: HomeComponent
   },
   {
