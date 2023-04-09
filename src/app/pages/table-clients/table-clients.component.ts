@@ -14,13 +14,13 @@ export class TableClientsComponent {
   constructor(private clientService: ClientService) {
   }
 
-  ngOnInit() {
+  ngOnInit():void {
     this.clientService.getAllClients().subscribe((result: IClient[]) => {
       this.clients = result;
     })
   }
 
-  deleteClient(cpf: string) {
+  deleteClient(cpf: string): void {
     Swal.fire({
       title: 'Tem certeza?',
       text: "Você não poderá reverter isso!",

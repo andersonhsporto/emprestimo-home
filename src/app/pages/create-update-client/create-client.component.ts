@@ -72,7 +72,7 @@ export class CreateClientComponent {
         return;
       }
 
-      let errorsMessage = this.concatenateErrors(error.error.errors);
+      let errorsMessage: string = this.concatenateErrors(error.error.errors);
       Swal.fire(
         {
           title: 'Erro ao criar cliente',
