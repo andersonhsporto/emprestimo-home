@@ -36,7 +36,7 @@ export class CreateUpdateClientComponent {
 
   ngOnInit():void {
     if (this.route.snapshot.paramMap.get('cpf')) {
-      this.getClient();
+      this.loadClient();
     } else {
       this.clientForm.controls['inputIncome'].setValue(null);
       this.clientForm.controls['inputNumber'].setValue(null);
@@ -47,21 +47,23 @@ export class CreateUpdateClientComponent {
     this.validateAllFormFields(this.clientForm);
     if (this.clientForm.valid) {
       if (this.clientCPF) {
-        this.updateClient();
+        this.update();
       } else {
-        this.createClient();
+        this.create();
       }
     }
   }
 
-  createClient():void {
+  create():void {
     const client: IClient = this.fromForm(this.clientForm.value);
 
     this.clientService.createClient(client).subscribe(result => {
       Swal.fire(
         {
           title: 'Cliente criado com sucesso',
-          text: 'Cliente com CPF ' + client.CPF + ' foi adicionado ao sistema',
+          text: 'Cliente com CPF '
+            + client.CPF.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/ , '$1.$2.$3-$4')
+            + ' foi adicionado ao sistema',
           icon: 'success',
           confirmButtonText: 'Ok'
         }
@@ -84,14 +86,16 @@ export class CreateUpdateClientComponent {
     });
   }
 
-  updateClient():void {
+  update():void {
     const client: IClient = this.fromForm(this.clientForm.value);
 
     this.clientService.updateClient(client, this.clientCPF).subscribe(result => {
       Swal.fire(
         {
           title: 'Cliente atualizado com sucesso',
-          text: 'Cliente com CPF ' + client.CPF + ' foi atualizado no sistema',
+          text: 'Cliente com CPF '
+            + client.CPF.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/ , '$1.$2.$3-$4')
+            + ' foi atualizado no sistema',
           icon: 'success',
           confirmButtonText: 'Ok'
         }
@@ -137,7 +141,7 @@ export class CreateUpdateClientComponent {
     });
   }
 
-  private getClient(): void {
+  private loadClient(): void {
     this.clientCPF = String(this.route.snapshot.paramMap.get('cpf'));
     if (this.clientCPF) {
       this.clientService.getClientByCpf(this.clientCPF).subscribe((client: IClient) => {
