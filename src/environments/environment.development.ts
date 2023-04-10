@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  api: 'http://localhost:8080/api/v1/'
+  api: 'https://emprestimo-prod-banco-ly24p0.mo4.mogenius.io/api/v1/'
 };
