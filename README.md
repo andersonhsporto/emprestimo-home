@@ -51,6 +51,10 @@ Execute `ng e2e` para executar os testes ponta a ponta via uma plataforma de sua
 
 Para obter mais ajuda sobre o Angular CLI, use `ng help` ou vá para a página [Angular CLI Overview and Command Reference](https://angular.io/cli).
 
+## Docker
+
+Para executar o projeto em um container docker, execute o comando `docker-compose up` na raiz do projeto.
+
 ## Informações de contato
 
 Caso tenha alguma dúvida, sugestão ou crítica, entre em contato comigo pelo [email](mailto:anderson.higo2@gmail.com)
