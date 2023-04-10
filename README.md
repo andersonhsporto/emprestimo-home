@@ -54,6 +54,7 @@ Para obter mais ajuda sobre o Angular CLI, use `ng help` ou vá para a página [
 ## Docker
 
 Para executar o projeto em um container docker, execute o comando `docker-compose up` na raiz do projeto.
+Este comando irá criar uma imagem docker com o nome `emprestimo-v1` e executar o container com o nome `client-emprestimo` na porta `3000`.
 
 ## Informações de contato
 
