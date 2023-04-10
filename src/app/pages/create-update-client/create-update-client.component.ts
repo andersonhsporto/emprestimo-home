@@ -152,7 +152,7 @@ export class CreateUpdateClientComponent {
           inputStreet: client.rua,
           inputNumber: client.numero,
           inputZip: client.CEP,
-          inputIncome: client.salario
+          inputIncome: client.rendimentoMensal
         })
       });
     }
@@ -166,7 +166,7 @@ export class CreateUpdateClientComponent {
       rua: form.inputStreet,
       numero: form.inputNumber,
       CEP: form.inputZip,
-      salario: form.inputIncome
+      rendimentoMensal: form.inputIncome
     };
   }
 
