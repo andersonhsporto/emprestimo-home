@@ -3,7 +3,7 @@
 ## Decrição
 
 Projeto de cadastro e visualização de clientes e empréstimos.<br>
-Esse projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.<br>
+Esse projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 15.2.4.<br>
 
 ### Funcionalidades
 
