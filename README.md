@@ -1,27 +1,57 @@
-# EmprestimoHome
+# Emprestimo Home
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
+## Decrição
 
-## Development server
+Projeto de cadastro e visualização de clientes e empréstimos.
+Esse projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.<br>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Funcionalidades
 
-## Code scaffolding
+- Cadastro de clientes
+- Edição de clientes
+- Exclusão de clientes
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Este projeto foi desenvolvido para utilizar como backend o 
+[emprestimo-api](https://github.com/andersonhsporto/emprestimo-api) 
+e utiliza a rota local http://localhost:8080 para acessar este.
+
+
+## Tecnologias
+
+- [Angular](https://angular.io/) - Framework para desenvolvimento de aplicações web
+- [Typescript](https://www.typescriptlang.org/) - Superset do Javascript
+- [Bootstrap](https://getbootstrap.com/) - Framework para desenvolvimento de aplicações web
+- [Ngx-currency](https://www.npmjs.com/package/ngx-currency) - Biblioteca para formatação de moeda
+
+## Instalação
+
+Execute `npm install` para instalar as dependências do projeto.
+
+## Servidor de desenvolvimento
+
+Execute `ng serve` para um servidor de desenvolvimento. Navegue para `http://localhost:4200/`. A aplicação será recarregada automaticamente se você alterar qualquer um dos arquivos de origem.
+
+## Gerando código
+
+Execute `ng generate component component-name` para gerar um novo componente. Você também pode usar `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Execute `ng build` para construir o projeto. Os artefatos de construção serão armazenados no diretório `dist/`.
 
-## Running unit tests
+## Executando testes unitários
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Execute `ng test` para executar os testes unitários via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Executando testes ponta a ponta
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Execute `ng e2e` para executar os testes ponta a ponta via uma plataforma de sua escolha. Para usar este comando, você precisa primeiro adicionar um pacote que implemente capacidades de teste ponta a ponta.
 
-## Further help
+## Ajuda adicional
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Para obter mais ajuda sobre o Angular CLI, use `ng help` ou vá para a página [Angular CLI Overview and Command Reference](https://angular.io/cli).
+
+## Informações de contato
+
+Caso tenha alguma dúvida, sugestão ou crítica, entre em contato comigo pelo [email](mailto:anderson.higo2@gmail.com)
+ou pelo [LinkedIn](https://www.linkedin.com/in/andersonhsporto/).
