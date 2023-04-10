@@ -22,6 +22,7 @@ e utiliza a rota local http://localhost:8080 para acessar este.
 - [Typescript](https://www.typescriptlang.org/) - Superset do Javascript
 - [Bootstrap](https://getbootstrap.com/) - Framework para desenvolvimento de aplicações web
 - [Ngx-currency](https://www.npmjs.com/package/ngx-currency) - Biblioteca para formatação de moeda
+- [Sweetalert2](https://sweetalert2.github.io/) - Biblioteca para criação de alertas
 
 ## Instalação
 
