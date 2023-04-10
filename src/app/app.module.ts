@@ -11,7 +11,7 @@ import {TableClientsComponent} from './pages/table-clients/table-clients.compone
 import {HttpClientModule} from "@angular/common/http";
 import {CpfPipe} from './service/pipe/cpf/cpf.pipe';
 import {TelephonePipe} from './service/pipe/telephone/telephone.pipe';
-import {CreateClientComponent} from './pages/create-update-client/create-client.component';
+import {CreateUpdateClientComponent} from './pages/create-update-client/create-update-client.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import localePt from '@angular/common/locales/pt';
 import {NgOptimizedImage, registerLocaleData} from "@angular/common";
@@ -38,7 +38,7 @@ export const customCurrencyMaskConfig = {
     NavbarComponent,
     HomeComponent,
     TableClientsComponent,
-    CreateClientComponent,
+    CreateUpdateClientComponent,
     CpfPipe,
     TelephonePipe,
     FieldErrorComponent,

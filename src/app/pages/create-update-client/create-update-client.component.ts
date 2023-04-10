@@ -7,11 +7,11 @@ import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-create-update-client',
-  templateUrl: './create-client.component.html',
-  styleUrls: ['./create-client.component.css'],
+  templateUrl: './create-update-client.component.html',
+  styleUrls: ['./create-update-client.component.css'],
   encapsulation: ViewEncapsulation.Emulated
 })
-export class CreateClientComponent {
+export class CreateUpdateClientComponent {
 
   clientForm = new FormGroup({
     inputCPF: new FormControl('',
@@ -36,7 +36,7 @@ export class CreateClientComponent {
 
   ngOnInit():void {
     if (this.route.snapshot.paramMap.get('cpf')) {
-      this.loadClient();
+      this.getClient();
     } else {
       this.clientForm.controls['inputIncome'].setValue(null);
       this.clientForm.controls['inputNumber'].setValue(null);
@@ -47,21 +47,23 @@ export class CreateClientComponent {
     this.validateAllFormFields(this.clientForm);
     if (this.clientForm.valid) {
       if (this.clientCPF) {
-        this.update();
+        this.updateClient();
       } else {
-        this.create();
+        this.createClient();
       }
     }
   }
 
-  create():void {
+  createClient():void {
     const client: IClient = this.fromForm(this.clientForm.value);
 
     this.clientService.createClient(client).subscribe(result => {
       Swal.fire(
         {
           title: 'Cliente criado com sucesso',
-          text: 'Cliente com CPF ' + client.CPF + ' foi adicionado ao sistema',
+          text: 'Cliente com CPF '
+            + client.CPF.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/ , '$1.$2.$3-$4')
+            + ' foi adicionado ao sistema',
           icon: 'success',
           confirmButtonText: 'Ok'
         }
@@ -84,14 +86,16 @@ export class CreateClientComponent {
     });
   }
 
-  update():void {
+  updateClient():void {
     const client: IClient = this.fromForm(this.clientForm.value);
 
     this.clientService.updateClient(client, this.clientCPF).subscribe(result => {
       Swal.fire(
         {
           title: 'Cliente atualizado com sucesso',
-          text: 'Cliente com CPF ' + client.CPF + ' foi atualizado no sistema',
+          text: 'Cliente com CPF '
+            + client.CPF.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/ , '$1.$2.$3-$4')
+            + ' foi atualizado no sistema',
           icon: 'success',
           confirmButtonText: 'Ok'
         }
@@ -137,7 +141,7 @@ export class CreateClientComponent {
     });
   }
 
-  private loadClient(): void {
+  private getClient(): void {
     this.clientCPF = String(this.route.snapshot.paramMap.get('cpf'));
     if (this.clientCPF) {
       this.clientService.getClientByCpf(this.clientCPF).subscribe((client: IClient) => {
