@@ -36,7 +36,7 @@ export class CreateUpdateClientComponent {
 
   ngOnInit():void {
     if (this.route.snapshot.paramMap.get('cpf')) {
-      this.loadClient();
+      this.getClient();
     } else {
       this.clientForm.controls['inputIncome'].setValue(null);
       this.clientForm.controls['inputNumber'].setValue(null);
@@ -47,14 +47,14 @@ export class CreateUpdateClientComponent {
     this.validateAllFormFields(this.clientForm);
     if (this.clientForm.valid) {
       if (this.clientCPF) {
-        this.update();
+        this.updateClient();
       } else {
-        this.create();
+        this.createClient();
       }
     }
   }
 
-  create():void {
+  createClient():void {
     const client: IClient = this.fromForm(this.clientForm.value);
 
     this.clientService.createClient(client).subscribe(result => {
@@ -86,7 +86,7 @@ export class CreateUpdateClientComponent {
     });
   }
 
-  update():void {
+  updateClient():void {
     const client: IClient = this.fromForm(this.clientForm.value);
 
     this.clientService.updateClient(client, this.clientCPF).subscribe(result => {
@@ -141,7 +141,7 @@ export class CreateUpdateClientComponent {
     });
   }
 
-  private loadClient(): void {
+  private getClient(): void {
     this.clientCPF = String(this.route.snapshot.paramMap.get('cpf'));
     if (this.clientCPF) {
       this.clientService.getClientByCpf(this.clientCPF).subscribe((client: IClient) => {
