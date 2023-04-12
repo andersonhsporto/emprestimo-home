@@ -16,16 +16,16 @@
     </thead>
     <tbody>
     <tr *ngFor="let client of clients">
-      <th scope="row">{{client.CPF | cpf }}</th>
+      <th scope="row">{{client.cpf | cpf }}</th>
       <td>{{client.nome}}</td>
       <td>{{client.telefone | telephone }}</td>
       <td>{{client.rua}}</td>
       <td>{{client.numero}}</td>
-      <td>{{client.CEP}}</td>
+      <td>{{client.cep}}</td>
       <td>{{client.rendimentoMensal | currency: 'BRL'}}</td>
       <td>
-        <button class="btn btn-dark btn-sm" routerLink="/clientes/cadastro/{{client.CPF}}" type="button">Atualizar</button>
-        <button (click)="deleteClient(client.CPF)" class="btn btn-danger btn-sm ms-1" type="button">Excluir</button>
+        <button class="btn btn-dark btn-sm" routerLink="/clientes/cadastro/{{client.cpf}}" type="button">Atualizar</button>
+        <button (click)="deleteClient(client.cpf)" class="btn btn-danger btn-sm ms-1" type="button">Excluir</button>
     </tr>
     </tbody>
   </table>

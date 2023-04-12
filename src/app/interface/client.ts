@@ -1,10 +1,10 @@
 export interface IClient {
-  CPF: string;
+  cpf: string;
   nome: string;
   telefone: string;
   rua: string;
   numero: number;
-  CEP: string;
+  cep: string;
   rendimentoMensal: number;
 }
 

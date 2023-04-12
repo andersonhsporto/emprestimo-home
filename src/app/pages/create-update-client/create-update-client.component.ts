@@ -28,7 +28,6 @@ export class CreateUpdateClientComponent {
     inputIncome: new FormControl(0, Validators.required)
   })
   clientCPF = "";
-  protected readonly console = console;
 
   constructor(private clientService: ClientService,
               private route: ActivatedRoute) {
@@ -62,7 +61,7 @@ export class CreateUpdateClientComponent {
         {
           title: 'Cliente criado com sucesso',
           text: 'Cliente com CPF '
-            + client.CPF.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/ , '$1.$2.$3-$4')
+            + client.cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/ , '$1.$2.$3-$4')
             + ' foi adicionado ao sistema',
           icon: 'success',
           confirmButtonText: 'Ok'
@@ -94,7 +93,7 @@ export class CreateUpdateClientComponent {
         {
           title: 'Cliente atualizado com sucesso',
           text: 'Cliente com CPF '
-            + client.CPF.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/ , '$1.$2.$3-$4')
+            + client.cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/ , '$1.$2.$3-$4')
             + ' foi atualizado no sistema',
           icon: 'success',
           confirmButtonText: 'Ok'
@@ -146,12 +145,12 @@ export class CreateUpdateClientComponent {
     if (this.clientCPF) {
       this.clientService.getClientByCpf(this.clientCPF).subscribe((client: IClient) => {
         this.clientForm.setValue({
-          inputCPF: client.CPF,
+          inputCPF: client.cpf,
           inputName: client.nome,
           inputTelephone: client.telefone,
           inputStreet: client.rua,
           inputNumber: client.numero,
-          inputZip: client.CEP,
+          inputZip: client.cep,
           inputIncome: client.rendimentoMensal
         })
       });
@@ -160,12 +159,12 @@ export class CreateUpdateClientComponent {
 
   private fromForm(form: any): IClient {
     return {
-      CPF: form.inputCPF,
+      cpf: form.inputCPF,
       nome: form.inputName,
       telefone: form.inputTelephone,
       rua: form.inputStreet,
       numero: form.inputNumber,
-      CEP: form.inputZip,
+      cep: form.inputZip,
       rendimentoMensal: form.inputIncome
     };
   }
