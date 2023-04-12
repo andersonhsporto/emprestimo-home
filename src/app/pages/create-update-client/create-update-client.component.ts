@@ -28,7 +28,6 @@ export class CreateUpdateClientComponent {
     inputIncome: new FormControl(0, Validators.required)
   })
   clientCPF = "";
-  protected readonly console = console;
 
   constructor(private clientService: ClientService,
               private route: ActivatedRoute) {
