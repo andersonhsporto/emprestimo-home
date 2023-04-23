@@ -7,7 +7,7 @@ import {IClient} from "../interface/client";
   providedIn: 'root'
 })
 export class ClientService {
-  endpoint = 'clientes';
+  endpoint = 'client';
   api = environment.api;
 
   constructor(private http: HttpClient) {

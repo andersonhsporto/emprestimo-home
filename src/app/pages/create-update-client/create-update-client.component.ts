@@ -146,12 +146,12 @@ export class CreateUpdateClientComponent {
       this.clientService.getClientByCpf(this.clientCPF).subscribe((client: IClient) => {
         this.clientForm.setValue({
           inputCPF: client.cpf,
-          inputName: client.nome,
-          inputTelephone: client.telefone,
-          inputStreet: client.rua,
-          inputNumber: client.numero,
-          inputZip: client.cep,
-          inputIncome: client.rendimentoMensal
+          inputName: client.name,
+          inputTelephone: client.telephone,
+          inputStreet: client.street,
+          inputNumber: client.number,
+          inputZip: client.zipCode,
+          inputIncome: client.monthIncome
         })
       });
     }
@@ -160,12 +160,12 @@ export class CreateUpdateClientComponent {
   private fromForm(form: any): IClient {
     return {
       cpf: form.inputCPF,
-      nome: form.inputName,
-      telefone: form.inputTelephone,
-      rua: form.inputStreet,
-      numero: form.inputNumber,
-      cep: form.inputZip,
-      rendimentoMensal: form.inputIncome
+      name: form.inputName,
+      telephone: form.inputTelephone,
+      street: form.inputStreet,
+      number: form.inputNumber,
+      zipCode: form.inputZip,
+      monthIncome: form.inputIncome
     };
   }
 

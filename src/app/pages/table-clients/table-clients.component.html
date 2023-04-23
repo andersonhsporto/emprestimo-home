@@ -17,12 +17,12 @@
     <tbody>
     <tr *ngFor="let client of clients">
       <th scope="row">{{client.cpf | cpf }}</th>
-      <td>{{client.nome}}</td>
-      <td>{{client.telefone | telephone }}</td>
-      <td>{{client.rua}}</td>
-      <td>{{client.numero}}</td>
-      <td>{{client.cep}}</td>
-      <td>{{client.rendimentoMensal | currency: 'BRL'}}</td>
+      <td>{{client.name}}</td>
+      <td>{{client.telephone | telephone }}</td>
+      <td>{{client.street}}</td>
+      <td>{{client.number}}</td>
+      <td>{{client.zipCode}}</td>
+      <td>{{client.monthIncome | currency: 'BRL'}}</td>
       <td>
         <button class="btn btn-dark btn-sm" routerLink="/clientes/cadastro/{{client.cpf}}" type="button">Atualizar</button>
         <button (click)="deleteClient(client.cpf)" class="btn btn-danger btn-sm ms-1" type="button">Excluir</button>
